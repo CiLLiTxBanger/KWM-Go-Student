@@ -11,3 +11,6 @@ Dutzende Fächer und Termine rund um die Uhr. Egal ob du Nachhilfe suchst oder s
 ## Weitere Informationen
 Auf GitHub, sowie am Server, liegen die Angular-Daten im entsprechenden Ordner "angular".
 
+
+angular Präfix kgs
+css präprozessor - scss
