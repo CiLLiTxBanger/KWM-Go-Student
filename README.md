@@ -1,5 +1,5 @@
 # KWM Go Student
-Die ideale Plattform für Nachhilfe!
+Die ideale Plattform für Nachhilfe - von KWM für KWM.
 
 Dutzende Fächer und Termine rund um die Uhr. Egal ob du Nachhilfe suchst oder sie anbietest. Bei uns bist du richtig!
 
