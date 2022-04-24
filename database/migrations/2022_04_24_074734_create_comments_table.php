@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKommentarsTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class CreateKommentarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('kommentars', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); //FK
+            $table->foreignId('offer_id')->constrained()->onDelete('cascade'); //FK
+            $table->string('text');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateKommentarsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kommentars');
+        Schema::dropIfExists('comments');
     }
 }
