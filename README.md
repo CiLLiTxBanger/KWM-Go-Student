@@ -14,3 +14,6 @@ Auf GitHub, sowie am Server, liegen die Angular-Daten im entsprechenden Ordner "
 
 angular Präfix kgs
 css präprozessor - scss
+
+
+angular folder erwstellen, dist insthalt kopieren, subdomain angular auf diesen ordner zeigen lassen

@@ -18,7 +18,6 @@ class CreateOffersTable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); //FK
             $table->string('subject'); // "Fach"
             $table->text('description')->nullable();
-            $table->text('timeslots');
             $table->timestamps();
         });
 
@@ -31,6 +30,7 @@ class CreateOffersTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('usercomments');
         Schema::dropIfExists('offers');
     }
 }

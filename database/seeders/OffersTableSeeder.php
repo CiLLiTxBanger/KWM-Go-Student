@@ -21,7 +21,6 @@ class OffersTableSeeder extends Seeder
         $offer1->user()->associate($user);
         $offer1->subject = "JAVA";
         $offer1->description = "Sprechen Sie JAVA";
-        $offer1->timeslots = "1,4,5,7";
         $offer1->save();
     }
 }
