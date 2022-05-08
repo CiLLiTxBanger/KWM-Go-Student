@@ -15,7 +15,7 @@ class CreateOffersTable extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id(); // auto PK
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); //FK
+            $table->foreignId('user_id')->unsigned()->constrained()->onDelete('cascade'); //FK
             $table->string('subject'); // "Fach"
             $table->text('description')->nullable();
             $table->timestamps();
