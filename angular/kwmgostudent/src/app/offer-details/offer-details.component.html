@@ -1,0 +1,35 @@
+<div class="ui grid" *ngIf="offer">
+  <div class="twelve wide column">
+    <h1 class="ui header">{{ offer.subject }}</h1>
+    <h3 class="ui header">{{ offer.description }}</h3>
+    <div class="ui divider"></div>
+    <div class="ui grid">
+      <div class="four wide column">
+        <h4 class="ui header">User</h4>
+        <span>
+         {{ offer.user.firstname }} {{ offer.user.lastname }}
+       </span>
+      </div>
+      <div class="four wide column">
+        <h4 class="ui header">Offer ID</h4>
+        {{ offer?.id }}
+      </div>
+      <div class="four wide column">
+        <h4 class="ui header">Erschienen</h4>
+<!--        {{ offer?.created_at | date : 'longDate' }}-->
+        {{ offer?.created_at }}
+      </div>
+    </div>
+  </div>
+  <div class="sixteen wide column">
+    <h3 class="ui header">Beschreibung</h3>
+    {{ offer.description }}
+  </div>
+</div>
+<button class="ui red button" routerLink="/offers">Zurück zur Liste</button>
+<!--<button *ngIf="authService.isLoggedIn()" class="ui red button labeled icon" (click)="removeBook()">-->
+<!--  <i class="remove icon"></i>Buch löschen-->
+<!--</button>-->
+<!--<a *ngIf="authService.isLoggedIn()" class="ui yellow labeled icon button" [routerLink]="['../../admin', book?.isbn]">-->
+<!--  <i class="write icon"></i>Buch bearbeiten-->
+<!--</a>-->

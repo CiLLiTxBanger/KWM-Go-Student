@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Author;
-use App\Models\Book;
-use App\Models\Image;
 use App\Models\Offer;
 use App\Models\Timeslot;
 use App\Models\User;
