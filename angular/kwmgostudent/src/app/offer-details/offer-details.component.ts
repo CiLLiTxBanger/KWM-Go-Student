@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KwmGoStudentService } from "../shared/kwm-go-student.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Offer } from "../shared/offer";
+import { Offer, Timeslot } from "../shared/offer";
 import { OfferFactory } from "../shared/offer-factory";
 
 @Component({
@@ -24,6 +24,14 @@ export class OfferDetailsComponent implements OnInit {
   ngOnInit(): void {
     const  params = this.route.snapshot.params;
     this.kgs.getSingle(params['id']).subscribe(o=> this.offer = o);
+  }
+
+  bookTimeslot(timeslot:Timeslot) {
+
+  }
+
+  removeTimeslot(timeslot:Timeslot) {
+
   }
 
 }

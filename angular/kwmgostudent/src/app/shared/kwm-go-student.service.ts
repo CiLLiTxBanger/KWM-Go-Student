@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Offer, User, Timelsot, Usercomment} from "./offer";
+import {Offer, User, Timeslot, Usercomment} from "./offer";
 import {HttpClient} from "@angular/common/http";
 import {Observable,throwError } from "rxjs";
 import {catchError, retry} from 'rxjs/operators';

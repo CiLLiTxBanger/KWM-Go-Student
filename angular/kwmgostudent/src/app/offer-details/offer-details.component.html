@@ -14,11 +14,6 @@
         <h4 class="ui header">Offer ID</h4>
         {{ offer?.id }}
       </div>
-      <div class="four wide column">
-        <h4 class="ui header">Erschienen</h4>
-<!--        {{ offer?.created_at | date : 'longDate' }}-->
-        {{ offer?.created_at }}
-      </div>
     </div>
   </div>
   <div class="sixteen wide column">
@@ -27,6 +22,28 @@
   </div>
 </div>
 <button class="ui red button" routerLink="/offers">Zurück zur Liste</button>
+<a class="ui tiny yellow labeled icon button"
+   [routerLink]="['../../offer/update', offer?.id]">
+  <i class="write icon"></i> Angebot bearbeiten
+</a>
+
+<h2 *ngIf="offer.timeslots?.length">Verfügbare Termine:</h2>
+<div class="ui horizontal segments" *ngIf="offer.timeslots?.length">
+  <div *ngFor="let timeslot of offer.timeslots">
+    <div *ngIf="!timeslot.user_id">
+      <div class="ui segment">
+        <h3 class="ui header">Beginn: {{timeslot.start}}</h3>
+        <h3 class="ui header">Ende: {{timeslot.end}}</h3>
+          <button class="ui tiny violet labeled icon button" (click)="bookTimeslot(timeslot)" >
+            <i class="calendar plus outline icon"></i> Termin jetzt verbindlich buchen
+          </button>
+          <button class="ui tiny violet labeled icon button" (click)="removeTimeslot(timeslot)" >
+            <i class="calendar plus outline icon"></i> Termin löschen
+          </button>
+      </div>
+    </div>
+  </div>
+</div>
 <!--<button *ngIf="authService.isLoggedIn()" class="ui red button labeled icon" (click)="removeBook()">-->
 <!--  <i class="remove icon"></i>Buch löschen-->
 <!--</button>-->

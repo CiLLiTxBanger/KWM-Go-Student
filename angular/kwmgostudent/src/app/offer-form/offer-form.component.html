@@ -1,0 +1,45 @@
+<h1>Angebotsformular</h1>
+<form [formGroup]="offerForm" class="ui large form" (ngSubmit)="submitForm()">
+  <input type="hidden" formControlName="id">
+  <input type="hidden" formControlName="user_id">
+  <input type="hidden" formControlName="user">
+  <div class="field">
+    <label>Fach:</label>
+    <input formControlName="subject">
+    <div *ngIf="errors['subject']" class="ui negative message">{{ errors['subject'] }}</div>
+  </div>
+  <div class="field">
+    <label>Beschreibung:</label>
+    <textarea formControlName="description" rows="3"></textarea>
+  </div>
+  <div class="field">
+    <label>Termine</label>
+    <div formArrayName="timeslots">
+      <div *ngIf="timeslots.controls.length > 0; else justButton">
+        <div class="fields" *ngFor="let control of timeslots.controls; index as i; last as l" [formGroupName]="i">
+          <input type="hidden" formControlName="id">
+          <div class="field">
+            <span>Beginn:</span>
+            <input type="datetime-local" formControlName="start">
+          </div>
+          <div class="field">
+            <span>Ende:</span>
+            <input type="datetime-local" formControlName="end">
+          </div>
+          <div class="one wide field" *ngIf="l">
+            <button (click)="addTimeslotControl()" class="ui large button" type="button">+</button>
+          </div>
+        </div>
+      </div>
+      <ng-template #justButton>
+        <div class="one wide field">
+          <button (click)="addTimeslotControl()" class="ui large button" type="button">+</button>
+        </div>
+      </ng-template>
+    </div>
+    <div *ngIf="errors['timeslots']" class="ui negative message">{{ errors['timeslots'] }}</div>
+  </div>
+
+  <button class="ui button" type="submit" [disabled]="offerForm.invalid">Speichern</button>
+</form>
+

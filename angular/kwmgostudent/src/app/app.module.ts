@@ -12,6 +12,10 @@ import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { AccountComponent } from './account/account.component';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ToastrModule, ToastrService } from "ngx-toastr";
+import { OfferFormComponent } from './offer-form/offer-form.component';
+import { ReactiveFormsModule } from "@angular/forms";
+import { LoginComponent } from './login/login.component';
+import { JsonPipe } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -20,14 +24,17 @@ import { ToastrModule, ToastrService } from "ngx-toastr";
     OfferListItemComponent,
     HomeComponent,
     OfferDetailsComponent,
-    AccountComponent
+    AccountComponent,
+    OfferFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ReactiveFormsModule,
   ],
   providers: [KwmGoStudentService],
   bootstrap: [AppComponent]

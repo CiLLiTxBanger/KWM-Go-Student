@@ -1,20 +1,20 @@
 import { User } from "./user";
 import { Usercomment } from "./usercomment";
-import { Timelsot } from "./timelsot";
+import { Timeslot } from "./timeslot";
 
 export { User } from "./user";
 export { Usercomment } from "./usercomment";
-export { Timelsot } from "./timelsot";
+export { Timeslot } from "./timeslot";
 
 
 export class Offer {
   constructor(public id:number,
+              public user_id:number,
               public user:User,
               public subject:string,
               public description:string,
-              public created_at:string,
               public usercomments?:Usercomment[],
-              public timeslots?:Timelsot[]) {
+              public timeslots?:Timeslot[]) {
 
   }
 }

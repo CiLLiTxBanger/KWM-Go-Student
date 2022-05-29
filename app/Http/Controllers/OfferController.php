@@ -20,7 +20,7 @@ class OfferController extends Controller
 
 
     public function findById($offer_id) {
-        $offer = Offer::where('id', $offer_id)->with(['user'])->first();
+        $offer = Offer::where('id', $offer_id)->with(['user', 'timeslots', 'usercomments'])->first();
         return $offer ?? "This offer_id does not exist"; //response()->json($book, 200)
     }
 
@@ -37,34 +37,57 @@ class OfferController extends Controller
         return $offer;
     }
 
-    public function save(Request $request) : JsonResponse {
+    public function save(Request $request) : JsonResponse{
         $request = $this->parseRequest($request);
-        /**
-         * use a transaction for saving model including relations
-         */
         DB::beginTransaction();
-        try {
+        try{
             $offer = Offer::create($request->all());
-//            if(isset($request['images']) && is_array($request['images'])) {
-//                foreach ($request['images'] as $img) {
-//                    $image = Image::firstOrNew(['url' => $img['url'], 'title' => $img['title']]);
-//                    $book->images()->save($image);
-//                }
-//            }
-//            if(isset($request['users']) && is_array($request['users'])) {
-//                foreach ($request['users'] as $user) {
-//                    $newUser = User::firstOrNew(['firstname' => $author['firstname'], 'lastname' => $author['lastname']]);
-//                    $book->authors()->save($newAuthor);
-//                }
-//            }
+            //timeslots
+            if (isset($request['timeslots'])&& is_array($request['timeslots'])){
+                foreach ($request['timeslots'] as $slot) {
+                    $timeslot = Timeslot::firstOrNew([
+                        'start' => $slot['start'],
+                        'end' => $slot['end']
+                    ]);
+                    $offer->timeslots()->save($timeslot);
+                }
+            }
             DB::commit();
-            return response()->json($offer, 200);
+            return response()->json($offer, 201);
         }
-        catch(\Exception $e) {
+        catch (\Exception $e){
             DB::rollBack();
-            return response()->json('saving offer failed' . $e->getMessage() . $e->getFile() . $e->getLine(), 420);
+            return response()->json('saving offer failed'.$e->getMessage(), 420);
         }
     }
+//    public function save(Request $request) : JsonResponse {
+//        $request = $this->parseRequest($request);
+//        /**
+//         * use a transaction for saving model including relations
+//         */
+//        DB::beginTransaction();
+//        try {
+//            $offer = Offer::create($request->all());
+////            if(isset($request['images']) && is_array($request['images'])) {
+////                foreach ($request['images'] as $img) {
+////                    $image = Image::firstOrNew(['url' => $img['url'], 'title' => $img['title']]);
+////                    $book->images()->save($image);
+////                }
+////            }
+////            if(isset($request['users']) && is_array($request['users'])) {
+////                foreach ($request['users'] as $user) {
+////                    $newUser = User::firstOrNew(['firstname' => $author['firstname'], 'lastname' => $author['lastname']]);
+////                    $book->authors()->save($newAuthor);
+////                }
+////            }
+//            DB::commit();
+//            return response()->json($offer, 200);
+//        }
+//        catch(\Exception $e) {
+//            DB::rollBack();
+//            return response()->json('saving offer failed' . $e->getMessage() . $e->getFile() . $e->getLine(), 420);
+//        }
+//    }
 
     private function parseRequest(Request $request) : Request {
         //get data and convert it - iso8601 - 2022-03-28T14:51:00.00Z
