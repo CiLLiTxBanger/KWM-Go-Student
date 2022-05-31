@@ -1,0 +1,10 @@
+<h1>Neuen Kommentar hinzufügen</h1>
+<form [formGroup]="usercommentForm" class="ui large form" (ngSubmit)="submitForm()">
+  <input type="hidden" formControlName="id">
+  <div class="field">
+    <span>Text:</span>
+    <input type="text" formControlName="text">
+  </div>
+  <div *ngIf="errors['timeslots']" class="ui negative message">{{ errors['timeslots'] }}</div>
+  <button class="ui button" type="submit" [disabled]="usercommentForm.invalid">Speichern</button>
+</form>

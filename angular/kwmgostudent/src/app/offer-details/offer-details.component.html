@@ -1,5 +1,6 @@
 <div class="ui grid" *ngIf="offer">
   <div class="twelve wide column">
+    <button class="ui red button" routerLink="/offers">Zurück zur Liste</button>
     <h1 class="ui header">{{ offer.subject }}</h1>
     <h3 class="ui header">{{ offer.description }}</h3>
     <div class="ui divider"></div>
@@ -21,11 +22,6 @@
     {{ offer.description }}
   </div>
 </div>
-<button class="ui red button" routerLink="/offers">Zurück zur Liste</button>
-<a class="ui tiny yellow labeled icon button"
-   [routerLink]="['../../offer/update', offer?.id]">
-  <i class="write icon"></i> Angebot bearbeiten
-</a>
 
 <h2 *ngIf="offer.timeslots?.length">Verfügbare Termine:</h2>
 <div class="ui horizontal segments" *ngIf="offer.timeslots?.length">
@@ -44,9 +40,30 @@
     </div>
   </div>
 </div>
-<!--<button *ngIf="authService.isLoggedIn()" class="ui red button labeled icon" (click)="removeBook()">-->
-<!--  <i class="remove icon"></i>Buch löschen-->
-<!--</button>-->
-<!--<a *ngIf="authService.isLoggedIn()" class="ui yellow labeled icon button" [routerLink]="['../../admin', book?.isbn]">-->
-<!--  <i class="write icon"></i>Buch bearbeiten-->
-<!--</a>-->
+
+<h2 *ngIf="offer.usercomments?.length">Kommentare:</h2>
+<div class="ui horizontal segments" *ngIf="offer.usercomments?.length">
+  <div *ngFor="let comment of offer.usercomments">
+    <div class="ui segment">
+      <span class="ui header">{{comment.text}}</span><br>
+      <span class="ui small">Geschrieben am: {{renderDate(comment.created_at)}}</span>
+    </div>
+  </div>
+</div>
+<button class="ui green labeled icon button" routerLink="./usercomment/create" >
+  <i class="calendar plus outline icon"></i> Kommentar hinzufügen
+</button>
+<br>
+<br>
+<a class="ui yellow labeled icon button"
+   [routerLink]="['../../offer/update', offer?.id]">
+  <i class="write icon"></i> Angebot bearbeiten
+</a>
+<!--*ngIf="authService.isLoggedIn()"-->
+<button  class="ui red button labeled icon" (click)="removeOffer()">
+  <i class="remove icon"></i>Angebot löschen
+</button>
+<br>
+<br>
+<button class="ui red button" routerLink="/offers">Zurück zur Liste</button>
+

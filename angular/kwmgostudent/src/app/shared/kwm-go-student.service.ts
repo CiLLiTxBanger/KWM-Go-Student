@@ -25,13 +25,23 @@ export class KwmGoStudentService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler))
   }
 
+  createUsercomment(usercomment: Usercomment): Observable<any> {
+    return this.http.post(`${this.api}/usercomment`, usercomment)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
   update(offer: Offer): Observable<any> {
     return this.http.put(`${this.api}/offers/${offer.id}`, offer)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
-  remove(id: string): Observable<any> {
+  remove(id: number): Observable<any> {
     return this.http.delete(`${this.api}/offers/${id}`)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+  removeTimeslot(id: number): Observable<any> {
+    return this.http.delete(`${this.api}/timeslot/${id}`)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 

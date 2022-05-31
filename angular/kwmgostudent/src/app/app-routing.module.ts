@@ -5,6 +5,7 @@ import { OfferListComponent } from "./offer-list/offer-list.component";
 import { OfferDetailsComponent } from "./offer-details/offer-details.component";
 import { AccountComponent } from "./account/account.component";
 import { OfferFormComponent } from "./offer-form/offer-form.component";
+import { UsercommentFormComponent } from "./usercomment-form/usercomment-form.component";
 
 //variablen die varieren immer mit :
 const routes:Routes = [
@@ -15,6 +16,7 @@ const routes:Routes = [
   {path:'account', component:AccountComponent},
   {path:'offer/create', component:OfferFormComponent},
   {path:'offer/update/:id', component:OfferFormComponent},
+  {path:'offers/:id/usercomment/create', component:UsercommentFormComponent},
   // {path:'admin', component:BookFormComponent, canActivate:[CanNavigateToAdminGuard]},
   // {path:'admin/:isbn', component:BookFormComponent, canActivate:[CanNavigateToAdminGuard]},
   // {path:'login', component:LoginComponent},

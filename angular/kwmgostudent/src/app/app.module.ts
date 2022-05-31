@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { OfferFormComponent } from './offer-form/offer-form.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { LoginComponent } from './login/login.component';
 import { JsonPipe } from "@angular/common";
+import { UsercommentFormComponent } from './usercomment-form/usercomment-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { JsonPipe } from "@angular/common";
     OfferDetailsComponent,
     AccountComponent,
     OfferFormComponent,
-    LoginComponent
+    LoginComponent,
+    UsercommentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { JsonPipe } from "@angular/common";
     ToastrModule.forRoot(),
     ReactiveFormsModule,
   ],
-  providers: [KwmGoStudentService],
+  providers: [ KwmGoStudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

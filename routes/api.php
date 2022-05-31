@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\TimeslotController;
+use App\Http\Controllers\UsercommentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +30,9 @@ Route::post('auth/login', [\App\Http\Controllers\AuthController::class, 'login']
 Route::post('offers', [OfferController::class, 'save']);
 Route::put('offers/{offerId}', [OfferController::class, 'update']);
 Route::delete('offers/{offerId}', [OfferController::class, 'delete']);
+
+Route::post('usercomment', [UsercommentController::class, 'save']);
+Route::delete('timeslot/{timeslotId}', [TimeslotController::class, 'delete']);
 
 //Route::group(['middleware' => ['api', 'auth.jwt']], function(){
 //    Route::post('offers', [OfferController::class, 'save']);
