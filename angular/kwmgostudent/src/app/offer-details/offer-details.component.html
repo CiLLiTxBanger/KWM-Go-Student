@@ -1,8 +1,9 @@
 <div class="ui grid" *ngIf="offer">
   <div class="twelve wide column">
-    <button class="ui red button" routerLink="/offers">Zurück zur Liste</button>
+    <button class="ui orange button" routerLink="/offers">Zurück zur Liste</button>
     <h1 class="ui header">{{ offer.subject }}</h1>
     <h3 class="ui header">{{ offer.description }}</h3>
+    <span>Erstellt am: {{renderDate(offer.created_at)}}</span>
     <div class="ui divider"></div>
     <div class="ui grid">
       <div class="four wide column">
@@ -28,13 +29,13 @@
   <div *ngFor="let timeslot of offer.timeslots">
     <div *ngIf="!timeslot.user_id">
       <div class="ui segment">
-        <h3 class="ui header">Beginn: {{timeslot.start}}</h3>
-        <h3 class="ui header">Ende: {{timeslot.end}}</h3>
-          <button class="ui tiny violet labeled icon button" (click)="bookTimeslot(timeslot)" >
-            <i class="calendar plus outline icon"></i> Termin jetzt verbindlich buchen
+        <h3 class="ui header">Beginn: {{renderDateTime(timeslot.start)}}</h3>
+        <h3 class="ui header">Ende: {{renderDateTime(timeslot.end)}}</h3>
+          <button class="ui tiny green labeled icon button" (click)="bookTimeslot(timeslot)" >
+            <i class="calendar checkmark outline icon"></i> Termin verbindlich buchen
           </button>
-          <button class="ui tiny violet labeled icon button" (click)="removeTimeslot(timeslot)" >
-            <i class="calendar plus outline icon"></i> Termin löschen
+          <button class="ui tiny red labeled icon button" (click)="removeTimeslot(timeslot)" >
+            <i class="calendar remove outline icon"></i> Termin löschen
           </button>
       </div>
     </div>
@@ -65,5 +66,5 @@
 </button>
 <br>
 <br>
-<button class="ui red button" routerLink="/offers">Zurück zur Liste</button>
+<button class="ui orange button" routerLink="/offers">Zurück zur Liste</button>
 

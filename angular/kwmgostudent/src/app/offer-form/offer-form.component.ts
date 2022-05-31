@@ -5,6 +5,7 @@ import { OfferFormErrorMessages } from "./offer-form-error-messages";
 import { OfferFactory } from "../shared/offer-factory";
 import { KwmGoStudentService } from "../shared/kwm-go-student.service";
 import { Offer, User } from "../shared/offer";
+import * as moment from "moment";
 
 @Component({
   selector: 'kgs-offer-form',
@@ -33,6 +34,12 @@ export class OfferFormComponent implements OnInit {
       this.isUpdatingOffer = true;
       this.kgs.getSingle(id).subscribe(offer =>{
         this.offer = offer;
+        for (let timeslot of this.offer.timeslots!) {
+          timeslot.start = moment(timeslot.start).format('YYYY-MM-DDTHH:MM:SS.SSS');
+          timeslot.end = moment(timeslot.end).format('YYYY-MM-DDTHH:MM:SS.SSS');
+          console.log(timeslot.start);
+          console.log(timeslot.end);
+        }
         this.initOffer();
       })
     }

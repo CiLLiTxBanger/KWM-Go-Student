@@ -14,7 +14,8 @@ export class Offer {
               public subject:string,
               public description:string,
               public usercomments?:Usercomment[],
-              public timeslots?:Timeslot[]) {
+              public timeslots?:Timeslot[],
+              public created_at?:any) {
 
   }
 }

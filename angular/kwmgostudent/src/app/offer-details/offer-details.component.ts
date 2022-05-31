@@ -32,6 +32,9 @@ export class OfferDetailsComponent implements OnInit {
   renderDate(date:any) {
     return moment(date).format("Do MMM YYYY");
   }
+  renderDateTime(date:any) {
+    return moment(date).format("DD.MM.YYYY - hh:mm");
+  }
 
   bookTimeslot(timeslot:Timeslot) {
 

@@ -2,7 +2,7 @@ import { Offer } from "./offer";
 
 export class OfferFactory {
   static empty():Offer {
-    return new Offer(0, 0,{ id:0, offers:[], firstname:"", lastname:"", role:false, email:"", password:""}, "", "", [], []);
+    return new Offer(0, 0,{ id:0, offers:[], firstname:"", lastname:"", role:false, email:"", password:""}, "", "", [], [], "");
   }
 
   static formObject(rawOffer: any):Offer {
@@ -15,6 +15,7 @@ export class OfferFactory {
       rawOffer.description,
       rawOffer.usercomments,
       rawOffer.timeslots,
+      rawOffer.created_at,
     );
   }
 }
