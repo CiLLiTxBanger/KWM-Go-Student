@@ -61,7 +61,7 @@
   <i class="write icon"></i> Angebot bearbeiten
 </a>
 <!--*ngIf="authService.isLoggedIn()"-->
-<button  class="ui red button labeled icon" (click)="removeOffer()">
+<button  class="ui red button labeled icon" (click)="removeOffer()" *ngIf="authService.isLoggedIn()">
   <i class="remove icon"></i>Angebot löschen
 </button>
 <br>

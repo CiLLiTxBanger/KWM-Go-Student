@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from "./shared/authentication.service";
 
 @Component({
   selector: 'kgs-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styles: []
 })
 export class AppComponent {
-  title = 'kwmgostudent';
+  constructor(private authService: AuthenticationService) { }
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+  getLoginLabel(){
+    if(this.isLoggedIn()){
+      return "Logout";
+    } else {
+      return "Login";
+    }
+  }
 }

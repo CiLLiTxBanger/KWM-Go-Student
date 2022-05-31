@@ -6,6 +6,7 @@ import { OfferFactory } from "../shared/offer-factory";
 import * as moment from 'moment';
 import { ToastrService } from "ngx-toastr";
 import { UsercommentFactory } from "../shared/usercomment-factory";
+import { AuthenticationService } from "../shared/authentication.service";
 
 @Component({
   selector: 'kgs-offer-details',
@@ -22,7 +23,7 @@ export class OfferDetailsComponent implements OnInit {
               private route:ActivatedRoute,
               private router:Router,
               private toastr:ToastrService,
-              // public authService: AuthenticationService
+              public authService: AuthenticationService
   ) { }
 
   ngOnInit(): void {

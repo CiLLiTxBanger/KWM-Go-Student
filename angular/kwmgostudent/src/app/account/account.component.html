@@ -1,1 +1,11 @@
-<p>account works!</p>
+<div class="content">
+  <h3 class="ui header">
+    Moin {{user?.firstname + " " + user?.lastname}}!
+  </h3>
+  <div class="description"> {{user?.email}} </div>
+  <div class="metadata">
+    <div class="description">{{user?.phonenumber}}    </div>
+  </div>
+  <h3 *ngIf="user?.role" >Deine angelegten Angebote:</h3>
+  <h3 *ngIf="user?.role">Deine gebuchten Termine:</h3>
+</div>
