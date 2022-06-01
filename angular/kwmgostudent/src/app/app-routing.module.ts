@@ -19,9 +19,6 @@ const routes:Routes = [
   {path:'offer/update/:id', component:OfferFormComponent},
   {path:'offers/:id/usercomment/create', component:UsercommentFormComponent},
   {path: 'login', component: LoginComponent}
-  // {path:'admin', component:BookFormComponent, canActivate:[CanNavigateToAdminGuard]},
-  // {path:'admin/:isbn', component:BookFormComponent, canActivate:[CanNavigateToAdminGuard]},
-  // {path:'login', component:LoginComponent},
 ]
 
 @NgModule({
