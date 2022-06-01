@@ -21,6 +21,7 @@ import { AuthenticationService } from "./shared/authentication.service";
 import { TokenInterceptorService } from "./shared/token-interceptor.service";
 import { LoginInterceptorService } from "./shared/login-interceptor.service";
 import { UserService } from "./shared/user.service";
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,10 @@ import { UserService } from "./shared/user.service";
     {
       provide: LOCALE_ID,
       useValue: 'de'
+    },
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
     }
     ],
   bootstrap: [AppComponent]

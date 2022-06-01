@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { User } from "../shared/user";
 import { UserService } from "../shared/user.service";
+import * as moment from "moment";
 
 @Component({
   selector: 'kgs-account',
@@ -11,10 +12,7 @@ import { UserService } from "../shared/user.service";
 })
 export class AccountComponent implements OnInit {
   // offers: Offer = NachhilfeFactory.empty();
-  user: User = new User(0, [], "ds", "sds", false, "", "", "", "")
-  //todo wo wird formUser in factory aufgerufen?
-
-  // user: User | undefined;
+  user: User = new User(0, [], "", "", false, "", "", "", "")
 
   constructor(
     private us: UserService,
@@ -22,11 +20,18 @@ export class AccountComponent implements OnInit {
   ) {
   }
   ngOnInit() {
-    console.log(this.user);
-    this.us.getSingleUser(this.getCurrentUserId()).subscribe(res=>this.user =res);
-    console.log(this.user);
+    this.us.getSingleUser(this.getCurrentUserId()).subscribe(res=>this.user = res, );
   }
+
   public getCurrentUserId() {
     return Number.parseInt(<string>sessionStorage.getItem("userId"));
+  }
+
+  renderDate(date:any) {
+    return moment(date).format("Do MMM YYYY");
+  }
+
+  renderDateTime(date:any) {
+    return moment(date).format("DD.MM.YYYY - hh:mm");
   }
 }

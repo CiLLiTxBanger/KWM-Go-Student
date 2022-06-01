@@ -1,11 +1,45 @@
+<div class="ui container">
 <div class="content">
   <h3 class="ui header">
-    Moin {{user?.firstname + " " + user?.lastname}}!
+    Moin {{user!.firstname + " " + user?.lastname}}!
   </h3>
-  <div class="description"> {{user?.email}} </div>
-  <div class="metadata">
-    <div class="description">{{user?.phonenumber}}    </div>
+  <div class="description">Ich bin: <span *ngIf="user.role == false">Nachhilfe-Suchende*r</span><span *ngIf="user.role == true">Nachhilfe-Gebende*r</span> </div>
+  <div class="description"><a href="mailto:{{user?.email}}">{{user?.email}} </a></div>
+  <div class="description"><a href="tel:{{user?.phonenumber}}">{{user?.phonenumber}}</a></div>
+  <h3 *ngIf="user?.role == true" >Deine angelegten Angebote:</h3>
+
+  <div *ngIf="user?.role == true" class="ui middle aligned selection animated divided list">
+    <a *ngFor="let offer of user?.offers" class="item kgs-offer-list-item" [offer]="offer" [routerLink]="'../offers/' + offer.id.toString()"></a>
   </div>
-  <h3 *ngIf="user?.role" >Deine angelegten Angebote:</h3>
-  <h3 *ngIf="user?.role">Deine gebuchten Termine:</h3>
+  <h3 *ngIf="user?.role == false" >Deine angenommenen Termine:</h3>
+  <div *ngIf="user?.role == false" class="ui middle aligned selection divided list">
+    <a *ngFor="let offer of user?.offers" class="item" [routerLink]="'../offers/' + offer.id.toString()">
+      <span class="ui">Angebot: {{offer.subject}}, ID: {{offer.id}}</span>
+      <div *ngFor="let timeslot of offer.timeslots" >
+        <div class="ui horizontal segments" *ngIf="timeslot.user_id != null">
+          <div class="ui segment">
+            <span class="ui">Beginn: {{renderDateTime(timeslot.start)}}</span><br>
+            <span class="ui">Ende: {{renderDateTime(timeslot.end)}}</span><br>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <h3 *ngIf="user?.role == true">Diese Termine wurden bereits gebucht:</h3>
+  <div *ngIf="user?.role == true" class="ui middle aligned selection divided list">
+    <!--  todo if timeslot.user_id dann nicht anzeigen. Geht aber nicht weil timeslot im falschen scope ist -->
+    <a *ngFor="let offer of user?.offers" class="item" [routerLink]="'../offers/' + offer.id.toString()">
+      <span class="ui">Angebot: {{offer.subject}}, ID: {{offer.id}}</span>
+      <div *ngFor="let timeslot of offer.timeslots" >
+        <div class="ui horizontal segments" *ngIf="timeslot.user_id != null">
+          <div class="ui segment">
+            <span class="ui">Beginn: {{renderDateTime(timeslot.start)}}</span><br>
+            <span class="ui">Ende: {{renderDateTime(timeslot.end)}}</span><br>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
 </div>

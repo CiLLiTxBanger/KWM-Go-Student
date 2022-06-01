@@ -1,8 +1,10 @@
-<div class="ui item tabs menu {{isLoggedIn()?'four':'three'}}">
+<div class="ui secondary pointing menu {{isLoggedIn()?'four':'three'}}">
   <a routerLink="home" routerLinkActive="active" class="item">Home</a>
   <a routerLink="offers" routerLinkActive="active" class="item">Offers</a>
   <a *ngIf="isLoggedIn()" routerLink="account" routerLinkActive="active" class="item">Account</a>
+  <div class="right menu">
   <a routerLink="login" routerLinkActive="active" class="item">{{getLoginLabel()}}</a>
+  </div>
 </div>
 
 <router-outlet></router-outlet> <!--hier werden dann die routen rausgeladen-->

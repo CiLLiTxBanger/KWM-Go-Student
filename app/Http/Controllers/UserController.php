@@ -13,7 +13,7 @@ use Ramsey\Uuid\Type\Time;
 class UserController extends Controller
 {
     public function getUser($userId) : JsonResponse {
-        $user = User::where('id', $userId)->first()->get();
+        $user = User::with(['offers', 'offers.timeslots'])->where('id', $userId)->first();
         if($user != null) {
             return response()->json($user, 201);
         }

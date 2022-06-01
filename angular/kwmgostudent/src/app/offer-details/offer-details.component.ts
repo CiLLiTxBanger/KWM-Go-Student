@@ -12,6 +12,7 @@ import { AuthenticationService } from "../shared/authentication.service";
   selector: 'kgs-offer-details',
   templateUrl: './offer-details.component.html',
   styles: [
+    'body {margin-left: 50px;}'
   ]
 })
 export class OfferDetailsComponent implements OnInit {
@@ -27,7 +28,7 @@ export class OfferDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const  params = this.route.snapshot.params;
+    const params = this.route.snapshot.params;
     this.kgs.getSingle(params['id']).subscribe(o=> this.offer = o);
   }
   renderDate(date:any) {
@@ -38,7 +39,12 @@ export class OfferDetailsComponent implements OnInit {
   }
 
   bookTimeslot(timeslot:Timeslot) {
-
+    let userId = Number.parseInt(<string>sessionStorage.getItem("userId"));
+    this.toastr.success("Termin erfolgreich gebucht", "Termin gebucht");
+    this.kgs.bookTimeslot(userId, timeslot.id).subscribe(res=>{
+      const  params = this.route.snapshot.params;
+      this.kgs.getSingle(params['id']).subscribe(o=> this.offer = o);
+    });
   }
 
   removeTimeslot(timeslot: Timeslot) {
@@ -56,6 +62,10 @@ export class OfferDetailsComponent implements OnInit {
       this.toastr.warning("Angebot erfolgreich gelöscht", "Angebot gelöscht");
       this.kgs.remove(this.offer.id).subscribe(res => this.router.navigate(['../'], {relativeTo:this.route}));
     }
+  }
+
+  public getCurrentUserId() {
+    return Number.parseInt(<string>sessionStorage.getItem("userId"));
   }
 
 }

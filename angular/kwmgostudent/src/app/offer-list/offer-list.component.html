@@ -1,8 +1,10 @@
-<div class="ui middle aligned selection divided list">
-<!--  todo remove attr-->
+<div class="ui container">
+<a routerLink="../offer/create" class="ui green button" *ngIf="authService.isLoggedIn()">Neues Angebot erstellen</a>
+<div class="ui middle aligned selection divided animated list">
   <a *ngFor="let offer of offers" class="item kgs-offer-list-item" [offer]="offer" [routerLink]=offer.id.toString()></a>
   <div *ngIf="!offers" class="ui active dimmer">
     <div class="ui large text loader">Daten werden geladen ...</div>
   </div>
   <p *ngIf="offers && !offers.length">Es wurden noch keine Angebote angelgt.</p>
+</div>
 </div>

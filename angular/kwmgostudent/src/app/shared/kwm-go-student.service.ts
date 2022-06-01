@@ -40,6 +40,11 @@ export class KwmGoStudentService {
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  bookTimeslot(userId: number, timeslotId: number): Observable<any> {
+    return this.http.put(`${this.api}/timeslot/${timeslotId}`, {user_id: userId})
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   removeTimeslot(id: number): Observable<any> {
     return this.http.delete(`${this.api}/timeslot/${id}`)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));

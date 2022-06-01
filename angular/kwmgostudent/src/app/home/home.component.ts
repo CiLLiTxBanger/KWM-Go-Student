@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Offer } from "../shared/offer";
+import { AuthenticationService } from "../shared/authentication.service";
 
 @Component({
   selector: 'kgs-home',

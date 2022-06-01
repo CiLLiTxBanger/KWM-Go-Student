@@ -68,7 +68,7 @@ export class OfferFormComponent implements OnInit {
         let fg = this.fb.group( {
           id: new FormControl(slot.id),
           user: this.emptyUser,
-          user_id: this.emptyUser.id,
+          user_id: new FormControl(slot.user_id),
           start: new FormControl(slot.start, [Validators.required]),
           end: new FormControl(slot.end, [Validators.required])
         });
@@ -108,9 +108,8 @@ export class OfferFormComponent implements OnInit {
       })
     }
     else {
-      // todo user
       offer.user = this.emptyUser;
-      offer.user_id = 1;
+      offer.user_id = Number.parseInt(<string>sessionStorage.getItem("userId"));
       this.kgs.create(offer).subscribe(res=>{
         this.offer = OfferFactory.empty();
         this.offerForm.reset(offer);
