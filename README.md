@@ -9,6 +9,10 @@ Dutzende Fächer und Termine rund um die Uhr. Egal ob du Nachhilfe suchst oder s
 - [Webpage](http://angular2.s1910456007.student.kwmhgb.at/) - Anwendung
 - [Mail](mailto:S1910456007@students.fh-hagenberg.at) - S1910456007@students.fh-hagenberg.at
 
+## Login Daten der User (von Seeder)
+Nachhilfe-Geber: test@gmail.com secret<br>
+Nachhilfe-Sucher: test2@gmail.com secret2
+
 ## Weitere Informationen
 Auf GitHub, sowie am Server, liegen die Angular-Daten im entsprechenden Ordner "angular".
 
