@@ -30,8 +30,12 @@ Die gängigen GET-Methoden sind auch ohne Login möglich. Die meisten Funktionen
 - [http://angular2.s1910456007.student.kwmhgb.at/#/login](http://angular2.s1910456007.student.kwmhgb.at/#/login) - Login
 - [http://angular2.s1910456007.student.kwmhgb.at/#/account](http://angular2.s1910456007.student.kwmhgb.at/#/account) - Profil
 
-## Routen
+## DatenbankSchema
 
+Datenbankschema
+![api](public/assets/DatenbankSchema.png)
+
+## Routen
 api.php
 ![api](public/assets/api.png)
 
@@ -52,3 +56,8 @@ Der grün hinterlegte Termin ist von diesem User selbst angenommen worden und wi
 
 Profil mit gebuchten Terminen
 ![](public/assets/ProfilMitGebuchtenTerminen.png)
+
+## Problemstellen
+- Datum: Konvertieren zwischen Datenbank und Angular Form war nicht einfach. Ich habe jetzt folgende Lösung mithilfe von moment.js gefunden: `moment(timeslot.start).format('YYYY-MM-DDTHH:MM:SS.SSS')`
+- Mitschicken von Relationen mithilfe von `::with`. Teilweise schwierig die Relationen mit for-Schleifen aufzudrösseln. Einsatz im Profil, da dort der User aufgerufen wird, welcher Offers hat, welche wiederum Timeslots haben.
+
