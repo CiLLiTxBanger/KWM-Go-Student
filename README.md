@@ -37,7 +37,9 @@ Die gängigen GET-Methoden sind auch ohne Login möglich. Die meisten Funktionen
 ## DatenbankSchema
 
 Datenbankschema
-![api](public/assets/DatenbankSchema.png)
+![Datenbankschema1](public/assets/DatenbankSchema.png)
+Datenbankschema
+![Auszug aus PHPMyAdmin](public/assets/DatenbankSchema2.png)
 
 ## Routen
 api.php
